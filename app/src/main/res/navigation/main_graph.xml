@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_luck" />
     <fragment
         android:id="@+id/horoscopoFragment"
-        android:name="com.aristidevs.horoscapp.ui.horocope.HoroscopoFragment"
+        android:name="com.aristidevs.horoscapp.ui.horoscope.HoroscopeFragment"
         android:label="fragment_horoscopo"
-        tools:layout="@layout/fragment_horoscopo" />
+        tools:layout="@layout/fragment_horoscope" />
     <fragment
         android:id="@+id/palmistryFragment"
         android:name="com.aristidevs.horoscapp.ui.palmistry.PalmistryFragment"
