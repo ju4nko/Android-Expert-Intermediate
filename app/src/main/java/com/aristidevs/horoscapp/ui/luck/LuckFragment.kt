@@ -1,6 +1,7 @@
 package com.aristidevs.horoscapp.ui.luck
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,11 +41,25 @@ class LuckFragment : Fragment() {
     }
 
     private fun preparePrediction() {
-        val luck = randomCardProvider.getLucky()
-        luck?.let {
-            binding.tvLucky.text = getString(it.text)
-            binding.ivluckyCard.setImageResource(it.image)
+        val currentluck = randomCardProvider.getLucky()
+        currentluck?.let { luck ->
+            val currentPrediction = getString(luck.text)
+            binding.tvLucky.text = currentPrediction
+            binding.ivluckyCard.setImageResource(luck.image)
+            binding.tvShare.setOnClickListener{shareResult(currentPrediction)}
         }
+    }
+
+    private fun shareResult(prediction: String) {
+        val sendIntent: Intent = Intent().apply {
+            action= Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, prediction)
+            type="text/plain"
+        }
+
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
+
     }
 
     private fun initListeners() {
